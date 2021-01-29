@@ -1,5 +1,5 @@
 import 'phaser';
-import splash from '../assets/thumb.jpg';
+import splash from '../assets/splash.png';
 
 export default class BootScene extends Phaser.Scene {
   constructor () {

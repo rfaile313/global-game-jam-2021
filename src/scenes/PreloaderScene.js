@@ -1,17 +1,29 @@
 import "phaser";
-import battle_sheet_1 from '../assets/art/Battle/Base/1_1.png';
-import battle_sheet_2 from '../assets/art/Battle/Base/1_2.png';
-import battle_sheet_3 from '../assets/art/Battle/Base/1_3.png';
-import battle_sheet_4 from '../assets/art/Battle/Base/1_4.png';
-import battle_sheet_5 from '../assets/art/Battle/Base/1_5.png';
-import battle_sheet_6 from '../assets/art/Battle/Base/1_6.png';
-import battle_sheet_7 from '../assets/art/Battle/Base/1_7.png';
-import battle_sheet_8 from '../assets/art/Battle/Base/1_8.png';
 
-import blocks from '../assets/art/Blocks/blocks.png';
-import map from '../assets/map/map1.json';
+// Characters
+import char_sheet_1 from '../assets/art/Characters/Base/military2.png';
+
+// Title Screen
+import title from '../assets/title.png'; 
+import menu_pointer from '../assets/menu_pointer.png';
+import play from '../assets/play.png'; 
+import optiontext from '../assets/optiontext.png'; 
+import credits from '../assets/credits.png'; 
+import red_particles from '../assets/particles/red.png';
+
+// Icons
 import iconSheet from '../assets/art/Icons/icons_full_32.png';
 import pointer from '../assets/pointer.png'; // angled glove hand
+
+// Map
+import map from '../assets/map/test1.json';
+import inside from '../assets/art/Tilesets/Base/inside.png';
+import outside from '../assets/art/Tilesets/Base/house.png';
+
+// Audio
+import title_music from '../assets/music/title_music.mp3';
+import gameplay_music from '../assets/music/gameplay_music.mp3';
+
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -23,22 +35,29 @@ export default class PreloaderScene extends Phaser.Scene {
     const splash = this.add.image(400, 200, "splash");
 
     // Assets Load here
-    this.load.spritesheet('battle_sheet_1', battle_sheet_1, {frameWidth: 144, frameHeight: 144});
-    this.load.spritesheet('battle_sheet_2', battle_sheet_2, {frameWidth: 144, frameHeight: 144});
-    this.load.spritesheet('battle_sheet_3', battle_sheet_3, {frameWidth: 144, frameHeight: 144});
-    this.load.spritesheet('battle_sheet_4', battle_sheet_4, {frameWidth: 144, frameHeight: 144});
-    this.load.spritesheet('battle_sheet_5', battle_sheet_5, {frameWidth: 144, frameHeight: 144});
-    this.load.spritesheet('battle_sheet_6', battle_sheet_6, {frameWidth: 144, frameHeight: 144});
-    this.load.spritesheet('battle_sheet_7', battle_sheet_7, {frameWidth: 144, frameHeight: 144});
-    this.load.spritesheet('battle_sheet_8', battle_sheet_8, {frameWidth: 144, frameHeight: 144});
+    this.load.spritesheet('char_sheet_1', char_sheet_1, {frameWidth: 26, frameHeight: 36});
 
     // Generate Map
-    this.load.image('blocks', blocks);
+    this.load.image('inside', inside);
+    this.load.image('outside', outside);
     this.load.tilemapTiledJSON('map', map);
+
     // Icons
-    this.load.spritesheet('icons', iconSheet, {frameWidth: 32, frameHeight: 32});
+    //this.load.spritesheet('icons', iconSheet, {frameWidth: 32, frameHeight: 32});
     // Change Cursor
     this.input.setDefaultCursor(`url(${pointer}), pointer`);
+
+    // Title Screen
+    this.load.image('title', title);
+    this.load.image('menu_pointer', menu_pointer);
+    this.load.image('play', play);
+    this.load.image('optiontext', optiontext);
+    this.load.image('credits', credits);
+    this.load.image('red_particles', red_particles);
+
+    // Audio
+    this.load.audio('title_music', title_music);
+    this.load.audio('gameplay_music', gameplay_music);
   
     // Loading Screen / Bar
     var progressBar = this.add.graphics();
@@ -110,8 +129,8 @@ export default class PreloaderScene extends Phaser.Scene {
   {
 
       // Debug --> Just load the game
-      this.scene.start('Game');
+      //this.scene.start('Game');
       // Prod --> Load title Screen
-      // self.scene.start('Title');
+      this.scene.start('Title');
   }
 }
