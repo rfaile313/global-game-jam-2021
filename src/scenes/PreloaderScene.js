@@ -1,7 +1,7 @@
 import "phaser";
 
 // Characters
-import char_sheet_1 from '../assets/art/Characters/Base/military2.png';
+import detective from '../assets/detective.png';
 
 // Title Screen
 import title from '../assets/title.png'; 
@@ -16,9 +16,14 @@ import iconSheet from '../assets/art/Icons/icons_full_32.png';
 import pointer from '../assets/pointer.png'; // angled glove hand
 
 // Map
-import map from '../assets/map/test1.json';
-import inside from '../assets/art/Tilesets/Base/inside.png';
-import outside from '../assets/art/Tilesets/Base/house.png';
+// import map from '../assets/map/test1.json';
+// import inside from '../assets/art/Tilesets/Base/inside.png';
+// import outside from '../assets/art/Tilesets/Base/house.png';
+
+import map from '../assets/map/test2.json';
+import buildings from '../assets/buildings.png';
+import floor from '../assets/floor.png';
+import road_items from '../assets/road_items.png';
 
 // Audio
 import title_music from '../assets/music/title_music.mp3';
@@ -35,11 +40,12 @@ export default class PreloaderScene extends Phaser.Scene {
     const splash = this.add.image(400, 200, "splash");
 
     // Assets Load here
-    this.load.spritesheet('char_sheet_1', char_sheet_1, {frameWidth: 26, frameHeight: 36});
+    this.load.spritesheet('detective', detective, {frameWidth: 26, frameHeight: 36});
 
     // Generate Map
-    this.load.image('inside', inside);
-    this.load.image('outside', outside);
+    this.load.image('buildings', buildings);
+    this.load.image('floor', floor);
+    this.load.image('road_items', road_items);
     this.load.tilemapTiledJSON('map', map);
 
     // Icons
