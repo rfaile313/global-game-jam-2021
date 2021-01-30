@@ -11,7 +11,7 @@ export default class TitleScene extends Phaser.Scene {
   create () {
 
     const titleMusic = this.sound.add('title_music');
-    titleMusic.play();
+    // titleMusic.play();
     
     const particles = this.add.particles('red_particles');
     const emitter = particles.createEmitter();

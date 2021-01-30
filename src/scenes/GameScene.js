@@ -29,9 +29,8 @@ export default class GameScene extends Phaser.Scene {
     const layer2 = map.createLayer(2, tile1, 0, 0); // sidewalk
     const layer3 = map.createLayer(3, tile3, 0, 0); // deco
 
-    layer0.setCollisionByExclusion( [-1] );
-    //layer2.setCollisionByExclusion( [-1] );
-    //layer3.setCollisionByExclusion( [-1] );
+    layer0.setCollisionByExclusion( [-1] ); // walls
+    layer3.setCollisionByExclusion( [-1] ); // deco
 
     this.player = this.physics.add.sprite(410, 250, "detective");
     this.player.body.setSize(16,8);
@@ -39,6 +38,7 @@ export default class GameScene extends Phaser.Scene {
     this.cameras.main.startFollow(this.player);
 
     this.physics.add.collider(this.player, layer0);
+    this.physics.add.collider(this.player, layer3);
 
     this.anims.create({
       key: "moving",
@@ -59,7 +59,13 @@ export default class GameScene extends Phaser.Scene {
   create() {
     // create -->
 
-    this.gameMusic.play();
+    // this.gameMusic.play();
+
+    // Pass this class to another function
+
+    var box1 = this.dialog(300, 380, '12px', 'Tell me a story Please....');
+   
+
   } // --> create
 
   update() {
@@ -90,9 +96,21 @@ export default class GameScene extends Phaser.Scene {
       this.player.setVelocity(0);
       this.player.anims.play("idle");
     }
-  
 
   } // --> update
+
+  dialog(text_x, text_y, size, text){
+    this.add.image(400, 400, 'text_box').setScrollFactor(0); // 400, 400 is perfect for placement
+ 
+    this.add.text(text_x, text_y, text,
+    {
+      fontFamily: "monospace",
+      fontSize: size,
+      fill: "black"
+    }
+    ).setScrollFactor(0);
+  }
+
 } // --> class GameScene
 
 // Debug

@@ -12,18 +12,16 @@ import credits from '../assets/credits.png';
 import red_particles from '../assets/particles/red.png';
 
 // Icons
-import iconSheet from '../assets/art/Icons/icons_full_32.png';
 import pointer from '../assets/pointer.png'; // angled glove hand
 
 // Map
-// import map from '../assets/map/test1.json';
-// import inside from '../assets/art/Tilesets/Base/inside.png';
-// import outside from '../assets/art/Tilesets/Base/house.png';
-
 import map from '../assets/map/test2.json';
 import buildings from '../assets/buildings.png';
 import floor from '../assets/floor.png';
 import road_items from '../assets/road_items.png';
+
+// Text Box
+import text_box from '../assets/text_box.png';
 
 // Audio
 import title_music from '../assets/music/title_music.mp3';
@@ -42,16 +40,17 @@ export default class PreloaderScene extends Phaser.Scene {
     // Assets Load here
     this.load.spritesheet('detective', detective, {frameWidth: 26, frameHeight: 36});
 
+    this.load.image('text_box', text_box);
+
     // Generate Map
     this.load.image('buildings', buildings);
     this.load.image('floor', floor);
     this.load.image('road_items', road_items);
     this.load.tilemapTiledJSON('map', map);
 
-    // Icons
-    //this.load.spritesheet('icons', iconSheet, {frameWidth: 32, frameHeight: 32});
-    // Change Cursor
+    // Default Cursor
     this.input.setDefaultCursor(`url(${pointer}), pointer`);
+    // Cursor Changes
 
     // Title Screen
     this.load.image('title', title);
