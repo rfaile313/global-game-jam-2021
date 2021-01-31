@@ -26,16 +26,17 @@ export default class TitleScene extends Phaser.Scene {
 
     const titleMusic = this.sound.add('title_music');
     
-    if (!this.music_playing) titleMusic.play();
+    if (!this.music_playing) titleMusic.play( { loop: true } );
     
     this.music_playing = true;
 
-    const particles = this.add.particles('red_particles');
-    const emitter = particles.createEmitter();
-    emitter.setPosition(600,400);
-    emitter.setSpeed(200);
-    emitter.setBlendMode(Phaser.BlendModes.ADD);
-    const title_image = this.add.image(390, 200, 'title').setScale(.7);
+    // const particles = this.add.particles('red_particles');
+    // const emitter = particles.createEmitter();
+    // emitter.setPosition(600,400);
+    // emitter.setSpeed(200);
+    // emitter.setBlendMode(Phaser.BlendModes.ADD);
+    const chase_ventura = this.add.image(280, 150, 'title1').setScale(.8);
+    const kid_detective = this.add.image(390, 200, 'title2').setScale(1.2);
     const play_button = this.add.image(390, 300, 'play').setScale(.8).setInteractive();
     const option_button = this.add.image(390, 350, 'optiontext').setScale(.8).setInteractive();
     const credits_button = this.add.image(390, 400, 'credits').setScale(.8).setInteractive();

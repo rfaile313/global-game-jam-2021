@@ -8,6 +8,8 @@ export default class OptionsScene extends Phaser.Scene {
   preload () {
     // Need to load anything not previously loaded
 
+    this.menu_sfx = this.sound.add('menu_nav');
+
   } // --> Preload
  
   create () {
@@ -46,13 +48,18 @@ export default class OptionsScene extends Phaser.Scene {
           if (music_on){
             music_on = false;
             music_toggle_on.setAlpha(0);
+            
             // Also disable music here
+            this.sound.stopAll();
+            this.menu_sfx.play();
           }
         });
         sound_toggle_on.on('pointerdown', () => {
           if (sfx_on){
             sfx_on = false;
             sound_toggle_on.setAlpha(0);
+            this.menu_sfx.play();
+
             // Also disable sfx here
           }
         });
@@ -61,13 +68,18 @@ export default class OptionsScene extends Phaser.Scene {
           if (!music_on){
             music_on = true;
             music_toggle_on.setAlpha(1);
+            this.menu_sfx.play();
+
             // Also enable music here
+            this.music_playing = false;
           }
         });
         sound_toggle_off.on('pointerdown', () => {
           if (!sfx_on){
             sfx_on = true;
             sound_toggle_on.setAlpha(1);
+            this.menu_sfx.play();
+
             // Also enable sfx here
           }
         });

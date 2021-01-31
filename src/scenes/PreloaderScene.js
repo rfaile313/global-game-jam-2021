@@ -2,12 +2,14 @@ import "phaser";
 
 // Characters
 import detective from '../assets/detective.png';
+import dottie from '../assets/dottie.png';
 
 // Items
 import desk from '../assets/just_desk.png';
 
 // Title Screen
-import title from '../assets/title.png'; 
+import title1 from '../assets/title1.png';
+import title2 from '../assets/title2.png'; 
 import menu_pointer from '../assets/menu_pointer.png';
 import play from '../assets/play.png'; 
 import optiontext from '../assets/optiontext.png'; 
@@ -18,6 +20,7 @@ import checkbox from '../assets/checkbox.png';
 import checked from '../assets/checked.png';
 import trench_coat from '../assets/trench_coat.png';
 import bubble_boy from '../assets/bubble_boy.png';
+import black from '../assets/black.png';
 
 // Icons
 import pointer from '../assets/pointer.png'; // angled glove hand
@@ -40,6 +43,15 @@ import title_music from '../assets/music/title_music.mp3';
 import intro_music from '../assets/music/intro_music.mp3';
 import gameplay_music from '../assets/music/gameplay_music.mp3';
 
+// SFX
+import girl_cry from '../assets/sfx/girl_cry.mp3';
+import girl_sniff from '../assets/sfx/girl_sniff.mp3';
+import knock_knock from '../assets/sfx/knock_knock.mp3';
+import mean_kid from '../assets/sfx/mean_kid.mp3';
+import menu_nav from '../assets/sfx/menu_nav.mp3';
+import pick_up_sound from '../assets/sfx/pick_up_sound.wav';
+import player_think from '../assets/sfx/player_think.mp3';
+
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -48,11 +60,13 @@ export default class PreloaderScene extends Phaser.Scene {
 
   preload() {
     // Add splash image during loading
-    const splash = this.add.image(400, 200, "splash");
+    //const splash = this.add.image(400, 200, "splash");
 
     // Assets Load here
     this.load.spritesheet('detective', detective, {frameWidth: 26, frameHeight: 36});
+    this.load.spritesheet('dottie', dottie, {frameWidth: 27, frameHeight: 34});
     this.load.spritesheet('bubble_boy', bubble_boy, {frameWidth: 375, frameHeight: 375})
+    this.load.image('black', black);
 
     this.load.image('text_box', text_box);
     this.load.image('more_text', more_text);
@@ -74,7 +88,8 @@ export default class PreloaderScene extends Phaser.Scene {
     // Cursor Changes
 
     // Title Screen
-    this.load.image('title', title);
+    this.load.image('title1', title1);
+    this.load.image('title2', title2);
     this.load.image('menu_pointer', menu_pointer);
     this.load.image('play', play);
     this.load.image('optiontext', optiontext);
@@ -92,6 +107,17 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio('title_music', title_music);
     this.load.audio('intro_music', intro_music);
     this.load.audio('gameplay_music', gameplay_music);
+
+    this.load.audio('girl_cry', girl_cry);
+    this.load.audio('girl_sniff', girl_sniff);
+    this.load.audio('knock_knock', knock_knock);
+    this.load.audio('mean_kid', mean_kid);
+    this.load.audio('menu_nav', menu_nav);
+    this.load.audio('pick_up_sound', pick_up_sound);
+    this.load.audio('player_think', player_think);
+
+    
+
 
     // Loading Screen / Bar
     var progressBar = this.add.graphics();
@@ -152,7 +178,7 @@ export default class PreloaderScene extends Phaser.Scene {
       loadingText.destroy();
       percentText.destroy();
       assetText.destroy();
-      splash.destroy();
+      //splash.destroy();
 
 
     });
@@ -163,8 +189,8 @@ export default class PreloaderScene extends Phaser.Scene {
   {
 
       // Debug --> Just load the game
-      //this.scene.start('Game');
+       this.scene.start('Game');
       // Prod --> Load title Screen
-      this.scene.start('Title');
+      // this.scene.start('Title');
   }
 }
