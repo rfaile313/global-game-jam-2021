@@ -11,7 +11,7 @@ export default class TitleScene extends Phaser.Scene {
   create () {
 
     const titleMusic = this.sound.add('title_music');
-    // titleMusic.play();
+     titleMusic.play();
     
     const particles = this.add.particles('red_particles');
     const emitter = particles.createEmitter();
@@ -22,6 +22,7 @@ export default class TitleScene extends Phaser.Scene {
     const play_button = this.add.image(390, 300, 'play').setScale(.8).setInteractive();
     const option_button = this.add.image(390, 350, 'optiontext').setScale(.8).setInteractive();
     const credits_button = this.add.image(390, 400, 'credits').setScale(.8).setInteractive();
+    const character_art = this.add.image(190, 405, 'trench_coat');
 
     // Hover Over Buttons
     play_button.on('pointerover', () => {
@@ -52,7 +53,7 @@ export default class TitleScene extends Phaser.Scene {
       this.scene.start('Game');
     });
     option_button.on('pointerdown', () => {
-      console.log('clicked options button');
+      this.scene.start('Options');
     });
     credits_button.on('pointerdown', () => {
       console.log('clicked credits button');

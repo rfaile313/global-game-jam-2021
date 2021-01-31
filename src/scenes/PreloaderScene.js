@@ -10,6 +10,10 @@ import play from '../assets/play.png';
 import optiontext from '../assets/optiontext.png'; 
 import credits from '../assets/credits.png'; 
 import red_particles from '../assets/particles/red.png';
+import back from '../assets/back.png';
+import checkbox from '../assets/checkbox.png';
+import checked from '../assets/checked.png';
+import trench_coat from '../assets/trench_coat.png';
 
 // Icons
 import pointer from '../assets/pointer.png'; // angled glove hand
@@ -19,6 +23,9 @@ import map from '../assets/map/test2.json';
 import buildings from '../assets/buildings.png';
 import floor from '../assets/floor.png';
 import road_items from '../assets/road_items.png';
+import house from '../assets/house.png';
+import inside from '../assets/inside.png';
+import sky from '../assets/sky.png';
 
 // Text Box
 import text_box from '../assets/text_box.png';
@@ -59,11 +66,18 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('optiontext', optiontext);
     this.load.image('credits', credits);
     this.load.image('red_particles', red_particles);
+    this.load.image('back', back);
+    this.load.image('trench_coat', trench_coat);
+
+    // Options Screen
+
+    this.load.image('checkbox', checkbox);
+    this.load.image('checked', checked);
 
     // Audio
     this.load.audio('title_music', title_music);
     this.load.audio('gameplay_music', gameplay_music);
-  
+
     // Loading Screen / Bar
     var progressBar = this.add.graphics();
     var progressBox = this.add.graphics();

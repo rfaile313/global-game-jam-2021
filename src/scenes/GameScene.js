@@ -12,6 +12,7 @@ export default class GameScene extends Phaser.Scene {
 
     console.log("game scene loaded");
 
+    // Disables Right Click 
     this.input.mouse.disableContextMenu();
     // Keyboard Control
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -40,6 +41,7 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, layer0);
     this.physics.add.collider(this.player, layer3);
 
+    // Player moving
     this.anims.create({
       key: "moving",
       frames: this.anims.generateFrameNumbers("detective", {
@@ -49,6 +51,7 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 10,
       repeat: -1,
     });
+    // Player not moving
     this.anims.create({
       key: "idle",
       frames: [{ key: "detective", frame: 0 }],
@@ -59,9 +62,7 @@ export default class GameScene extends Phaser.Scene {
   create() {
     // create -->
 
-    // this.gameMusic.play();
-
-    // Pass this class to another function
+    this.gameMusic.play();
 
     var box1 = this.dialog(300, 380, '12px', 'Tell me a story Please....');
    

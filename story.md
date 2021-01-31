@@ -8,9 +8,9 @@ Base Idea:
 
 Characters:
 
-- $player
+- $player (chase ventura, kid detective?)
 - Bobby (regular kid)
-- Doris (crying)
+- Dottie (crying)
 - Jimmy (shady)
 - Carl (nerd)
 - Betty (blonde)
@@ -18,7 +18,7 @@ Characters:
 
 Ideas:
 
-- 1920s noire / ganster slang
+- 1920s noire / gangster slang
 
 - Mystery on who is stealing all of the toys? (it's babyface mcgee!)
 
