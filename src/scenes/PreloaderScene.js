@@ -3,6 +3,9 @@ import "phaser";
 // Characters
 import detective from '../assets/detective.png';
 
+// Items
+import desk from '../assets/just_desk.png';
+
 // Title Screen
 import title from '../assets/title.png'; 
 import menu_pointer from '../assets/menu_pointer.png';
@@ -19,7 +22,7 @@ import trench_coat from '../assets/trench_coat.png';
 import pointer from '../assets/pointer.png'; // angled glove hand
 
 // Map
-import map from '../assets/map/test2.json';
+import map from '../assets/map/game_map.json';
 import buildings from '../assets/buildings.png';
 import floor from '../assets/floor.png';
 import road_items from '../assets/road_items.png';
@@ -29,9 +32,11 @@ import sky from '../assets/sky.png';
 
 // Text Box
 import text_box from '../assets/text_box.png';
+import more_text from '../assets/more_text.png';
 
 // Audio
 import title_music from '../assets/music/title_music.mp3';
+import intro_music from '../assets/music/intro_music.mp3';
 import gameplay_music from '../assets/music/gameplay_music.mp3';
 
 
@@ -48,11 +53,18 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.spritesheet('detective', detective, {frameWidth: 26, frameHeight: 36});
 
     this.load.image('text_box', text_box);
+    this.load.image('more_text', more_text);
+    this.load.image('desk', desk);
+
 
     // Generate Map
     this.load.image('buildings', buildings);
     this.load.image('floor', floor);
     this.load.image('road_items', road_items);
+    this.load.image('house', house);
+    this.load.image('inside', inside);
+    this.load.image('sky', sky);
+
     this.load.tilemapTiledJSON('map', map);
 
     // Default Cursor
@@ -76,6 +88,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     // Audio
     this.load.audio('title_music', title_music);
+    this.load.audio('intro_music', intro_music);
     this.load.audio('gameplay_music', gameplay_music);
 
     // Loading Screen / Bar

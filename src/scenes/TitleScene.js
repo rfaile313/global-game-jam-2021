@@ -50,13 +50,13 @@ export default class TitleScene extends Phaser.Scene {
     play_button.on('pointerdown', () => {
       console.log('clicked play button');
       this.sound.stopAll();
-      this.scene.start('Game');
+      this.scene.start('Intro');
     });
     option_button.on('pointerdown', () => {
       this.scene.start('Options');
     });
     credits_button.on('pointerdown', () => {
-      console.log('clicked credits button');
+      this.scene.start('Credits');
     });
   }
 
