@@ -6,23 +6,40 @@ export default class TitleScene extends Phaser.Scene {
   }
  
   preload () {
-  }
+    this.anims.create({
+      key: "bubble",
+      frames: this.anims.generateFrameNumbers("bubble_boy", {
+        start: 0,
+        end: 4,
+      }),
+      frameRate: 5,
+      repeat: -1,
+    });
+
+    this.bubble = this.add.sprite(150, 405, "bubble_boy");
+    this.bubble.anims.play("bubble");
+
+  } // --> preload
  
   create () {
 
+
     const titleMusic = this.sound.add('title_music');
-     titleMusic.play();
     
+    if (!this.music_playing) titleMusic.play();
+    
+    this.music_playing = true;
+
     const particles = this.add.particles('red_particles');
     const emitter = particles.createEmitter();
-    emitter.setPosition(390,200);
+    emitter.setPosition(600,400);
     emitter.setSpeed(200);
     emitter.setBlendMode(Phaser.BlendModes.ADD);
     const title_image = this.add.image(390, 200, 'title').setScale(.7);
     const play_button = this.add.image(390, 300, 'play').setScale(.8).setInteractive();
     const option_button = this.add.image(390, 350, 'optiontext').setScale(.8).setInteractive();
     const credits_button = this.add.image(390, 400, 'credits').setScale(.8).setInteractive();
-    const character_art = this.add.image(190, 405, 'trench_coat');
+    //const character_art = this.add.image(190, 405, 'trench_coat');
 
     // Hover Over Buttons
     play_button.on('pointerover', () => {

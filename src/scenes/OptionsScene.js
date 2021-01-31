@@ -82,7 +82,7 @@ export default class OptionsScene extends Phaser.Scene {
         });
 
         back_button.on('pointerdown', () => {
-          this.sound.stopAll();
+          
           this.scene.start('Title');
         });
   

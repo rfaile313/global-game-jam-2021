@@ -17,6 +17,7 @@ import back from '../assets/back.png';
 import checkbox from '../assets/checkbox.png';
 import checked from '../assets/checked.png';
 import trench_coat from '../assets/trench_coat.png';
+import bubble_boy from '../assets/bubble_boy.png';
 
 // Icons
 import pointer from '../assets/pointer.png'; // angled glove hand
@@ -51,6 +52,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     // Assets Load here
     this.load.spritesheet('detective', detective, {frameWidth: 26, frameHeight: 36});
+    this.load.spritesheet('bubble_boy', bubble_boy, {frameWidth: 375, frameHeight: 375})
 
     this.load.image('text_box', text_box);
     this.load.image('more_text', more_text);

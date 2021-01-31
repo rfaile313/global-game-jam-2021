@@ -1,4 +1,5 @@
 import "phaser";
+import dialog from '../dialog/dialog';
 
 export default class IntroScene extends Phaser.Scene {
   constructor() {
@@ -13,7 +14,7 @@ export default class IntroScene extends Phaser.Scene {
 
     console.log("game scene loaded");
 
-    // Disables Right Click 
+    // Disables Right Click
     this.input.mouse.disableContextMenu();
     // Keyboard Control
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -45,16 +46,16 @@ export default class IntroScene extends Phaser.Scene {
     const layer8 = map.createLayer(8, inside, 0, 0); // bedroom furntiture
 
     this.player = this.physics.add.sprite(105, 75, "detective");
-    this.player.body.setSize(12,8);
+    this.player.body.setSize(12, 8);
     this.player.body.offset.y = 30;
     this.cameras.main.startFollow(this.player);
 
-    layer2.setCollisionByExclusion( [-1] );
-    layer3.setCollisionByExclusion( [-1] );
-    layer4.setCollisionByExclusion( [-1] ); 
-    layer6.setCollisionByExclusion( [-1] ); 
-    layer7.setCollisionByExclusion( [-1] ); 
-    layer8.setCollisionByExclusion( [-1] ); 
+    layer2.setCollisionByExclusion([-1]);
+    layer3.setCollisionByExclusion([-1]);
+    layer4.setCollisionByExclusion([-1]);
+    layer6.setCollisionByExclusion([-1]);
+    layer7.setCollisionByExclusion([-1]);
+    layer8.setCollisionByExclusion([-1]);
 
     this.physics.add.collider(this.player, layer2);
     this.physics.add.collider(this.player, layer3);
@@ -63,7 +64,7 @@ export default class IntroScene extends Phaser.Scene {
     this.physics.add.collider(this.player, layer7);
     this.physics.add.collider(this.player, layer8);
 
-    this.add.image(100, 75, 'desk');
+    this.add.image(100, 75, "desk");
 
     // Player moving
     this.anims.create({
@@ -88,70 +89,132 @@ export default class IntroScene extends Phaser.Scene {
 
     this.introMusic.play();
 
-    var box1 = this.dialog(300, 380, '12px', 
-`It was a day just like any 
-other. I was siting in my 
-office, a room that is more..`);
+    this.dialog_counter = 0;
+    this.move = false;
 
-var more = this.add.image(495, 425, 'more_text').setScale(.5).setScrollFactor(0).setInteractive();
-var tween = this.tweens.add({
-  targets: more,
-  y: 430,
-  duration: 1000,
-  ease: 'Power2',
-  yoyo: true,
-  loop: -1
-});
-   
+    var box = this.add.image( 400, 400, 'text_box').setScrollFactor(0).setInteractive();
+
+    var text = this.add.text( 300, 375,
+        Object.values(dialog)[this.dialog_counter],
+       {
+          fontFamily: "monospace",
+          fontSize: '12px',
+          fill: "black",
+        })
+        .setScrollFactor(0);
+
+      var more = this.add.image(495, 425, "more_text").setScale(.5).setScrollFactor(0).setInteractive();
+      var tween = this.tweens.add({
+        targets: more,
+        y: 430,
+        duration: 1000,
+        ease: "Power2",
+        yoyo: true,
+        loop: -1,
+      });
+
+    box.on('pointerdown', () => {
+      text.destroy();
+      this.dialog_counter++;
+      if (this.dialog_counter == 6){
+              this.time.addEvent({
+      delay: 300,
+      callback: dottie_walks_in,
+      callbackScope: this,
+    });
+    function dottie_walks_in(){
+      
+    }
+
+      }
+      else {
+      text = this.add.text( 300, 375,
+        Object.values(dialog)[this.dialog_counter],
+       {
+          fontFamily: "monospace",
+          fontSize: '12px',
+          fill: "black",
+        })
+        .setScrollFactor(0);
+      }
+    });
+  
+
+ 
+  
+//                           || absolute cutoff
+//     var box2 = this.dialog(
+//       300,
+//       380,
+//       "12px",
+// `often known as my bedroom. 
+// This is where I operate my 
+// detective business. I try..`
+//     );
+
+
 
   } // --> create
 
   update() {
     // update -->
     this.player.setVelocity(0);
-    
-    if (this.cursors.left.isDown || this.keyA.isDown) 
-    {
+
+    if (this.move){
+    if (this.cursors.left.isDown || this.keyA.isDown) {
       this.player.setVelocityX(-70);
       this.player.anims.play("moving", true);
-    } 
-    else if (this.cursors.right.isDown || this.keyD.isDown) 
-    {
+    } else if (this.cursors.right.isDown || this.keyD.isDown) {
       this.player.setVelocityX(70);
       this.player.anims.play("moving", true);
-    } 
-    else if (this.cursors.up.isDown || this.keyW.isDown) 
-    {
+    } else if (this.cursors.up.isDown || this.keyW.isDown) {
       this.player.setVelocityY(-70);
       this.player.anims.play("moving", true);
-    } 
-    else if (this.cursors.down.isDown || this.keyS.isDown) 
-    {
+    } else if (this.cursors.down.isDown || this.keyS.isDown) {
       this.player.setVelocityY(70);
       this.player.anims.play("moving", true);
-    } 
-    else {
+    } else {
       this.player.setVelocity(0);
       this.player.anims.play("idle");
     }
-
+    }
   } // --> update
 
-  dialog(text_x, text_y, size, text){
-    var box = this.add.image(400, 400, 'text_box').setScrollFactor(0); // 400, 400 is perfect for placement
- 
-    var txt = this.add.text(text_x, text_y, text,
-    {
-      fontFamily: "monospace",
-      fontSize: size,
-      fill: "black"
-    }
-    ).setScrollFactor(0);
+  // dialog(text_x, text_y, size, text,) {
+  //   this.time.addEvent({
+  //     delay: 300,
+  //     callback: createText,
+  //     callbackScope: this,
+  //   });
 
-    
+  //   function createText() {
+  //     var box = this.add.image(400, 400, "text_box").setScrollFactor(0); // 400, 400 is perfect for placement
 
-  }
+  //     var txt = this.add
+  //       .text(text_x, text_y, text, {
+  //         fontFamily: "monospace",
+  //         fontSize: size,
+  //         fill: "black",
+  //       })
+  //       .setScrollFactor(0);
 
+  //     var more = this.add
+  //       .image(495, 425, "more_text")
+  //       .setScale(0.5)
+  //       .setScrollFactor(0)
+  //       .setInteractive();
+
+  //     var tween = this.tweens.add({
+  //       targets: more,
+  //       y: 430,
+  //       duration: 1000,
+  //       ease: "Power2",
+  //       yoyo: true,
+  //       loop: -1,
+  //     });
+
+  //   }
+  
 } // --> class GameScene
 
 // Debug

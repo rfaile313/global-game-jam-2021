@@ -70,7 +70,6 @@ this.add.text(210, 390, 'Wesley S. Uchiyama-Penix',
           });
   
           back_button.on('pointerdown', () => {
-            this.sound.stopAll();
             this.scene.start('Title');
           });
 
