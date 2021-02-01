@@ -4,6 +4,14 @@ import "phaser";
 import detective from '../assets/detective.png';
 import dottie from '../assets/dottie.png';
 
+import jimmy from '../assets/jimmy.png';
+import carl from '../assets/carl.png';
+import betty from '../assets/betty.png';
+import baby from '../assets/baby.png';
+import lackey from '../assets/lackey.png';
+import bobby from '../assets/bobby.png';
+import mom from '../assets/mom.png';
+
 // Items
 import desk from '../assets/just_desk.png';
 
@@ -21,9 +29,12 @@ import checked from '../assets/checked.png';
 import trench_coat from '../assets/trench_coat.png';
 import bubble_boy from '../assets/bubble_boy.png';
 import black from '../assets/black.png';
+import end_graphic from '../assets/end.png';
+
 
 // Icons
 import pointer from '../assets/pointer.png'; // angled glove hand
+
 
 // Map
 import map from '../assets/map/game_map.json';
@@ -42,6 +53,8 @@ import more_text from '../assets/more_text.png';
 import title_music from '../assets/music/title_music.mp3';
 import intro_music from '../assets/music/intro_music.mp3';
 import gameplay_music from '../assets/music/gameplay_music.mp3';
+import victory_music from '../assets/music/victory_music.mp3';
+
 
 // SFX
 import girl_cry from '../assets/sfx/girl_cry.mp3';
@@ -71,6 +84,16 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('text_box', text_box);
     this.load.image('more_text', more_text);
     this.load.image('desk', desk);
+
+    this.load.image('jimmy', jimmy);
+    this.load.image('carl', carl);
+    this.load.image('betty', betty);
+    this.load.image('baby', baby);
+    this.load.image('lackey', lackey);
+    this.load.image('bobby', bobby);
+    this.load.image('mom', mom);
+    this.load.image('end_graphic', end_graphic);
+
 
 
     // Generate Map
@@ -107,6 +130,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio('title_music', title_music);
     this.load.audio('intro_music', intro_music);
     this.load.audio('gameplay_music', gameplay_music);
+    this.load.audio('victory_music', victory_music);
+
 
     this.load.audio('girl_cry', girl_cry);
     this.load.audio('girl_sniff', girl_sniff);
@@ -189,8 +214,8 @@ export default class PreloaderScene extends Phaser.Scene {
   {
 
       // Debug --> Just load the game
-       this.scene.start('Game');
+       //this.scene.start('Game');
       // Prod --> Load title Screen
-      // this.scene.start('Title');
+      this.scene.start('Title');
   }
 }

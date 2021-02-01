@@ -59,8 +59,5 @@ intro19: `Chase: Alright, Dottie. I'll
 see what I can do, let me walk 
 around the block and take 
 a look.`,
-intro20: ``,
-intro21: ``,
-intro22: ``,
-
+done: ``,
     };

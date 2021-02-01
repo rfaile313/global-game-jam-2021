@@ -1,5 +1,5 @@
 import "phaser";
-import dialog from '../dialog/dialog';
+import intro from '../dialog/intro';
 
 export default class IntroScene extends Phaser.Scene {
   constructor() {
@@ -67,7 +67,7 @@ export default class IntroScene extends Phaser.Scene {
     var box = this.add.image( 400, 400, 'text_box').setScrollFactor(0).setInteractive();
 
     var text = this.add.text( 300, 375,
-        Object.values(dialog)[this.dialog_counter],
+        Object.values(intro)[this.dialog_counter],
        {
           fontFamily: "monospace",
           fontSize: '12px',
@@ -133,7 +133,7 @@ export default class IntroScene extends Phaser.Scene {
       }
       else {
       text = this.add.text( 300, 375,
-        Object.values(dialog)[this.dialog_counter],
+        Object.values(intro)[this.dialog_counter],
        {
           fontFamily: "monospace",
           fontSize: '12px',
