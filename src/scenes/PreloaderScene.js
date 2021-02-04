@@ -22,7 +22,6 @@ import menu_pointer from '../assets/menu_pointer.png';
 import play from '../assets/play.png'; 
 import optiontext from '../assets/optiontext.png'; 
 import credits from '../assets/credits.png'; 
-import red_particles from '../assets/particles/red.png';
 import back from '../assets/back.png';
 import checkbox from '../assets/checkbox.png';
 import checked from '../assets/checked.png';
@@ -117,7 +116,6 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('play', play);
     this.load.image('optiontext', optiontext);
     this.load.image('credits', credits);
-    this.load.image('red_particles', red_particles);
     this.load.image('back', back);
     this.load.image('trench_coat', trench_coat);
 

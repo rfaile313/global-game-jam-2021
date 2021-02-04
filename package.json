@@ -1,7 +1,7 @@
 {
   "name": "kid-detective",
   "version": "1.1.0",
-  "description": "in progress",
+  "description": "It's a Mystery, and Chase Ventura is on the case! Help Kid Detective Chase Ventura solve the case of the missing toys in this noir pixel game! Use the mouse to point/click and Keyboard (Arrow or WASD) keys to move. Recommended Browser: Google Chrome",
   "main": "src/index.js",
   "scripts": {
     "build": "webpack --config webpack/prod.js ",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rfaile313/solid-tactics"
+    "url": "https://github.com/rfaile313/global-game-jam-2021"
   },
   "author": "Rudy Faile <@rfaile313> (https://rudyfaile.com)",
   "devDependencies": {
